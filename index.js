@@ -15,6 +15,7 @@ const mockResponse = {
 // https://github.com/actions/toolkit/pull/1574/files
 const generateMarkup = async (response) => {
     console.log('response data', response);
+    const { summary } = core;
     await summary
      .addHeading('EDS Usage')
      .addTable(
