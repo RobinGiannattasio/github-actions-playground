@@ -31,7 +31,7 @@ try {
   // https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
   // https://github.com/actions/toolkit/pull/1574/files
 
-  await core.summary
+  core.summary
     .addHeading('EDS Usage')
     .addTable(
         [
