@@ -21,11 +21,11 @@ const generateMarkup = async (response) => {
      .addTable(
         [
             [{data: 'Token', header: true}, {data: 'Component', header: true}],
-            ['foo.js', 'Pass ✅']
-            ['10', '8']
-            [`${10}`, `${8}`]
-            // [response.tokenUsages, response.componentUsage]
-            // [`${response.tokenUsages}`, `${response.componentUsage}`]
+            ['foo.js', 'Pass ✅'],
+            ['10', '8'],
+            [`${10}`, `${8}`],
+            [response.tokenUsages, response.componentUsage],
+            [`${response.tokenUsages}`, `${response.componentUsage}`]
         ]
      )
      .write();
