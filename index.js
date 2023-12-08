@@ -12,8 +12,20 @@ const mockResponse = {
     tokenUsagesFromJsx: 4
 }
 
-try {
+const generateMarkup = async (response) => {
+    const { summary } = core;
+    await summary
+     .addHeading('EDS Usage')
+     .addTable(
+        [
+            [{data: 'Token', header: true}, {data: 'Component', header: true}],
+            [response.tokenUsages, response.componentUsage],
+        ]
+     )
+     .write();
+}
 
+try {
 /*---------example code------------*/
 //   // `who-to-greet` input defined in action metadata file
 //   const nameToGreet = core.getInput('who-to-greet');
@@ -31,15 +43,7 @@ try {
   // https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
   // https://github.com/actions/toolkit/pull/1574/files
 
-  core.summary
-    .addHeading('EDS Usage')
-    .addTable(
-        [
-            [{data: 'Token', header: true}, {data: 'Component', header: true}],
-            [mockResponse.tokenUsages, mockResponse.componentUsage],
-        ]
-    )
-    .write();
+    generateMarkup(mockResponse);
 } catch (error) {
   core.setFailed(error.message);
 }
