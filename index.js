@@ -1,4 +1,4 @@
-import { setFailed, summary } from '@actions/core';
+const core = require('@actions/core');
 
 const mockResponse = {
     tokenUsages: 10,
