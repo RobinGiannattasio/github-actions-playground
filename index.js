@@ -1,4 +1,4 @@
-const core = require('@actions/core');
+import { setFailed, summary } from '@actions/core';
 
 const mockResponse = {
     tokenUsages: 10,
@@ -15,13 +15,16 @@ const mockResponse = {
 // https://github.com/actions/toolkit/pull/1574/files
 const generateMarkup = async (response) => {
     console.log('response data', response);
-    const { summary } = core;
     await summary
      .addHeading('EDS Usage')
      .addTable(
         [
             [{data: 'Token', header: true}, {data: 'Component', header: true}],
             ['foo.js', 'Pass ✅']
+            ['10', '8']
+            [`${10}`, `${8}`]
+            [response.tokenUsages, response.componentUsage]
+            [`${response.tokenUsages}`, `${response.componentUsage}`]
         ]
      )
      .write();
@@ -30,5 +33,5 @@ const generateMarkup = async (response) => {
 try {
   generateMarkup(mockResponse);
 } catch (error) {
-  core.setFailed(error.message);
+  setFailed(error.message);
 }
