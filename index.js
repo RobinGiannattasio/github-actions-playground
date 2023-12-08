@@ -21,9 +21,7 @@ const generateMarkup = async (response) => {
      .addTable(
         [
             [{data: 'Token', header: true}, {data: 'Component', header: true}],
-            [response.tokenUsages, response.componentUsage],
-            // Mock Faux earlier runs
-            [2, 4],
+            ['foo.js', 'Pass ✅']
         ]
      )
      .write();
