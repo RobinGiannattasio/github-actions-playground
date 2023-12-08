@@ -24,8 +24,8 @@ const generateMarkup = async (response) => {
             ['foo.js', 'Pass ✅']
             ['10', '8']
             [`${10}`, `${8}`]
-            [response.tokenUsages, response.componentUsage]
-            [`${response.tokenUsages}`, `${response.componentUsage}`]
+            // [response.tokenUsages, response.componentUsage]
+            // [`${response.tokenUsages}`, `${response.componentUsage}`]
         ]
      )
      .write();
