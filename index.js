@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
 
 const mockResponse = {
     tokenUsages: 10,
@@ -12,7 +11,10 @@ const mockResponse = {
     tokenUsagesFromJsx: 4
 }
 
+// https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
+// https://github.com/actions/toolkit/pull/1574/files
 const generateMarkup = async (response) => {
+    console.log('response data', response);
     const { summary } = core;
     await summary
      .addHeading('EDS Usage')
@@ -20,30 +22,15 @@ const generateMarkup = async (response) => {
         [
             [{data: 'Token', header: true}, {data: 'Component', header: true}],
             [response.tokenUsages, response.componentUsage],
+            // Mock Faux earlier runs
+            [2, 4],
         ]
      )
      .write();
 }
 
 try {
-/*---------example code------------*/
-//   // `who-to-greet` input defined in action metadata file
-//   const nameToGreet = core.getInput('who-to-greet');
-//   console.log(`Hello ${nameToGreet}!`);
-
-//   const time = (new Date()).toTimeString();
-//   core.setOutput("time", time);
-
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
-/*------------------------------------*/
-  console.log('example data', mockResponse);
-
-  // https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
-  // https://github.com/actions/toolkit/pull/1574/files
-
-    generateMarkup(mockResponse);
+  generateMarkup(mockResponse);
 } catch (error) {
   core.setFailed(error.message);
 }
