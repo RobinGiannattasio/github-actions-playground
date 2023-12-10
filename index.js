@@ -13,6 +13,11 @@ const core = require('@actions/core');
 
 const { getInput, summary } = core;
 
+const getChangeMessage = (current, prev) => {
+  const change = current - prev;
+  return `${change}${change < 0 ? '' : ' 🔥🔥🔥'}`
+}
+
 const getStatusMessage = (current, prev) => {
   // Assume increase means good, status quo means fine, and decrease is bad
   const change = current - prev;
@@ -20,12 +25,6 @@ const getStatusMessage = (current, prev) => {
   if (change < 0) return '🟠';
   return '⚪️'
 };
-
-const getChangeMessage = (current, prev) => {
-  const change = current - prev;
-  const isDecrease = change < 0;
-  return `${isDecrease ? '-' : ''}${change}${isDecrease ? '' : '🔥'}`
-}
 
 const generateMarkup = async (current, prev) => {
   const {
