@@ -1,13 +1,33 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Format EDS Usage'
+description: 'Take EDS usage data and provide meaningful metrics'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  tokens:
+    description: number of total tokens used
     required: true
-    default: 'World'
+    default: 0
+  components:
+    description: number of total components used
+    required: true
+    default: 0
+  tokensFromSCSS:
+    description: number of tokens found in SCSS
+    required: true
+    default: 0
+  tokensFromJSX:
+    description: number of total tokens found in JSX
+    required: true
+    default: 0
+  componentsFromJSX:
+    description: number of components used in React
+    required: true
+    default: 0
+  componentsFromHBS:
+    description: number of components used in Ember
+    required: true
+    default: 0
 outputs:
   time: # id of output
-    description: 'The time we greeted you'
+    description: 'The time action was run' # Not currently set or used
 runs:
   using: 'node20'
   main: 'index.js'
