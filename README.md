@@ -1,23 +1,27 @@
-# Hello world javascript action
+# EDS Usage Markdown Output
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action accepts the output from the EDS usage script and formats it into markdown to be displayed as a job summary in the github workflow
 
 ## Inputs
 
-### `who-to-greet`
+### `currentCount`
 
-**Required** The name of the person to greet. Default `"World"`.
-
-## Outputs
-
-### `time`
-
-The time we greeted you.
+**Required** A stringified object of the usage across the repository.
+```
+{
+  tokenUsages: 10,
+  componentUsages: 12,
+  componentUsagesFromJsx: 10,
+  componentUsagesFromHbs: 2,
+  tokenUsagesFromScss: 6,
+  tokenUsagesFromJsx: 4
+}
+```
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
+uses: RobinGiannattasio/github-actions-playground@v1.19
 with:
-  who-to-greet: 'Mona the Octocat'
+  currentCount: '{"tokenUsages":10,"componentUsages":12,"componentUsagesFromJsx":10,"componentUsagesFromHbs":2,"tokenUsagesFromScss":6,"tokenUsagesFromJsx":4}'
 ```
