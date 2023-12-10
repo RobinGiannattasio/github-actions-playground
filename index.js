@@ -15,14 +15,16 @@ const { getInput, summary } = core;
 
 const getStatusMessage = (current, prev) => {
   // Assume increase means good, status quo means fine, and decrease is bad
-  const result = current - prev;
-  if (result > 0) return '🟢';
-  if (result < 0) return '🟠';
+  const change = current - prev;
+  if (change > 0) return '🟢';
+  if (change < 0) return '🟠';
   return '⚪️'
 };
 
 const getChangeMessage = (current, prev) => {
-  return `${current - prev}${current > prev ? '🔥' : ''}`
+  const change = current - prev;
+  const isDecrease = change < 0;
+  return `${isDecrease ? '-' : ''}${change}${isDecrease ? '' : '🔥'}`
 }
 
 const generateMarkup = async (current, prev) => {
@@ -68,21 +70,21 @@ const generateMarkup = async (current, prev) => {
         getChangeMessage(tokenUsages, prevTokenUsages),
         getStatusMessage(componentUsages, prevComponentUsages)
     ]])
-    .addRaw('For more information about usage of assets over time, please visit ')
+    .addRaw('Please visit')
     .addLink('the EDS usage chart', 'https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0')
+    .addRaw(' for more information about usage of assets over time.')
     .addEOL()
-    .addHeading('Token Breakdown', '2')
-    .addRaw('Tokens can be utilized in scoped globally or at the component level. The following table summarizes complete token usage.')
+    .addHeading('Detailed Breakdown', '2')
+    .addRaw('Asset usage is analyzed across the entire repository. Here is a more detailed view into where assets are being used.')
     .addEOL()
+    .addHeading('Token', '3')
     .addTable(
       [
         [{data: 'Global', header: true}, {data: 'Component', header: true},  {data: 'Total', header: true}],
         [`${tokenUsagesFromScss}`, `${tokenUsagesFromJsx}`, `${tokenUsages}`]
       ]
     )
-    .addHeading('Component Breakdown', '2')
-    .addRaw('Design System Components can be found in Ember Templates or in React. This table breaks down the component usage across the code base.')
-    .addEOL()
+    .addHeading('Component', '3')
     .addTable(
       [
         [{data: 'React', header: true}, {data: 'Ember', header: true},  {data: 'Total #️⃣', header: true}],
@@ -94,6 +96,7 @@ const generateMarkup = async (current, prev) => {
 
 try {
   console.log('currentCount', getInput('currentCount'));
+  console.log('previousCount', getInput('previousCount'));
   const currentCount = JSON.parse(getInput('currentCount') || '{}');
   const prevCount = JSON.parse(getInput('previousCount') || '{}');
 
