@@ -63,5 +63,5 @@ try {
 
   generateMarkup(currentCount);
 } catch (error) {
-  setFailed(error.message);
+  core.setFailed(error.message);
 }
