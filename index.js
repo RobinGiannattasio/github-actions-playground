@@ -15,7 +15,7 @@ const { getInput, summary } = core;
 
 const getChangeMessage = (current, prev) => {
   const change = current - prev;
-  return `${change}${change < 0 ? '' : ' 🔥🔥🔥'}`
+  return `${change}${change < 0 ? '' : ' 🔥'}`
 }
 
 const getStatusMessage = (current, prev) => {
@@ -54,10 +54,10 @@ const generateMarkup = async (current, prev) => {
     .addEOL()
     .addTable([
       [
-        {data: 'Asset ⭐️', header: true},
-        {data: 'Usage #️⃣', header: true},
-        {data: 'Change 📈', header: true},
-        {data: 'Status 🌈', header: true},
+        {data: '⭐️ Asset', header: true},
+        {data: '#️⃣ Usage', header: true},
+        {data: '📈 Change', header: true},
+        {data: '🌈 Status', header: true},
       ],[
         `Tokens`,
         `${tokenUsages}`,
@@ -77,19 +77,27 @@ const generateMarkup = async (current, prev) => {
     .addRaw('Asset usage is analyzed across the entire repository. Here is a more detailed view into where assets are being used.')
     .addEOL()
     .addHeading('Token', '3')
-    .addTable(
+    .addTable([
       [
-        [{data: 'Global', header: true}, {data: 'Component', header: true},  {data: 'Total #️⃣', header: true}],
-        [`${tokenUsagesFromScss}`, `${tokenUsagesFromJsx}`, `${tokenUsages}`]
-      ]
-    )
+        {data: 'Global', header: true},
+        {data: 'Component', header: true},
+        {data: '#️⃣ Total', header: true}
+      ],[
+        `${tokenUsagesFromScss}`,
+        `${tokenUsagesFromJsx}`,
+        `${tokenUsages}`
+    ]])
     .addHeading('Component', '3')
-    .addTable(
+    .addTable([
       [
-        [{data: 'React', header: true}, {data: 'Ember', header: true},  {data: 'Total #️⃣', header: true}],
-        [`${componentUsagesFromJsx}`, `${componentUsagesFromHbs}`, `${componentUsages}`]
-      ]
-    )
+        {data: 'React', header: true},
+        {data: 'Ember', header: true},
+        {data: '#️⃣ Total', header: true}
+      ],[
+        `${componentUsagesFromJsx}`,
+        `${componentUsagesFromHbs}`,
+        `${componentUsages}`,
+    ]])
     .write();
 }
 
