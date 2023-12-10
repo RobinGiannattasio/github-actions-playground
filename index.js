@@ -2,7 +2,7 @@ const core = require('@actions/core');
 
 // const exampleResponse = {
 //     tokenUsages: 10,
-//     componentUsage: 12,
+//     componentUsages: 12,
 
 //     // derivative data
 //     componentUsagesFromJsx: 10,
@@ -18,7 +18,7 @@ const { getInput, summary } = core;
 const generateMarkup = async (data) => {
   const {
     tokenUsages = 0,
-    componentUsage = 0,
+    componentUsages = 0,
     componentUsagesFromJsx = 0,
     componentUsagesFromHbs = 0,
     tokenUsagesFromScss = 0,
@@ -32,7 +32,7 @@ const generateMarkup = async (data) => {
     .addTable(
       [
           [{data: 'Token', header: true}, {data: 'Component', header: true}],
-          [`${tokenUsages}`, `${componentUsage}`]
+          [`${tokenUsages}`, `${componentUsages}`]
       ]
     )
     .addHeading('Token Breakdown', '2')
@@ -50,7 +50,7 @@ const generateMarkup = async (data) => {
     .addTable(
       [
         [{data: 'React', header: true}, {data: 'Ember', header: true},  {data: 'Total', header: true}],
-        [`${componentUsagesFromJsx}`, `${componentUsagesFromHbs}`, `${componentUsage}`]
+        [`${componentUsagesFromJsx}`, `${componentUsagesFromHbs}`, `${componentUsages}`]
       ]
     )
     .write();
