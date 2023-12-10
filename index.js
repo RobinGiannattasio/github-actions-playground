@@ -67,12 +67,12 @@ const generateMarkup = async (current, prev) => {
       ],[
         `Components`,
         `${componentUsages}`,
-        getChangeMessage(tokenUsages, prevTokenUsages),
+        getChangeMessage(componentUsages, prevComponentUsages),
         getStatusMessage(componentUsages, prevComponentUsages)
     ]])
-    .addRaw('Please visit')
-    .addLink('the EDS usage chart', 'https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0')
-    .addRaw(' for more information about usage of assets over time.')
+    .addRaw('Please visit the ')
+    .addLink('EDS usage chart ', 'https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0')
+    .addRaw('for more information about usage of assets over time.')
     .addEOL()
     .addHeading('Detailed Breakdown', '2')
     .addRaw('Asset usage is analyzed across the entire repository. Here is a more detailed view into where assets are being used.')
@@ -80,7 +80,7 @@ const generateMarkup = async (current, prev) => {
     .addHeading('Token', '3')
     .addTable(
       [
-        [{data: 'Global', header: true}, {data: 'Component', header: true},  {data: 'Total', header: true}],
+        [{data: 'Global', header: true}, {data: 'Component', header: true},  {data: 'Total #️⃣', header: true}],
         [`${tokenUsagesFromScss}`, `${tokenUsagesFromJsx}`, `${tokenUsages}`]
       ]
     )
