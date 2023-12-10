@@ -57,8 +57,9 @@ const generateMarkup = async (data) => {
 }
 
 try {
+  console.log('currentCount - raw format', getInput('currentCount'));
   const currentCount = JSON.parse(getInput('currentCount') || `{}`);
-  console.log('currentCount', currentCount);
+  console.log('currentCount - post parse', currentCount);
 
   generateMarkup(currentCount);
 } catch (error) {
