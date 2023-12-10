@@ -15,7 +15,7 @@ const { getInput, summary } = core;
 
 const getChangeMessage = (current, prev) => {
   const change = current - prev;
-  return `${change}${change < 0 ? '' : ' 🔥'}`
+  return `${change}${change > 0 ? ' 🔥' : ''}`
 }
 
 const getStatusMessage = (current, prev) => {
