@@ -50,8 +50,6 @@ const generateMarkup = async (current, prev) => {
   // https://github.com/actions/toolkit/pull/1574/files
   await summary
     .addHeading('✨ EDS Usage ✨')
-    .addRaw('Successful adoption of the Expel Design System will allow us to recalibrate our UX and unify our offering across product lines. The following chart tracks usage of the different EDS assets throughout this repository.')
-    .addEOL()
     .addTable([
       [
         {data: '⭐️ Asset', header: true},
@@ -69,6 +67,8 @@ const generateMarkup = async (current, prev) => {
         getChangeMessage(componentUsages, prevComponentUsages),
         getStatusMessage(componentUsages, prevComponentUsages)
     ]])
+    .addRaw('Successful adoption of the Expel Design System will allow us to recalibrate our UX and unify our offering across product lines. The following chart tracks usage of the different EDS assets throughout this repository.')
+    .addEOL()
     .addRaw('Please visit the ')
     .addLink('EDS usage chart ', 'https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0')
     .addRaw('for more information about usage of assets over time.')
