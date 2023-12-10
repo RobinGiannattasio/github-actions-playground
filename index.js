@@ -16,8 +16,6 @@ const { getInput, summary } = core;
 // https://github.blog/2022-05-09-supercharging-github-actions-with-job-summaries/
 // https://github.com/actions/toolkit/pull/1574/files
 const generateMarkup = async (tokenUsage, componentUsage) => {
-    console.log('tokenUsage', tokenUsage);
-    console.log('componentUsage', componentUsage);
     await summary
      .addHeading('✨ EDS Usage ✨')
      .addRaw('Some content here :speech_balloon:', true)
@@ -35,6 +33,10 @@ try {
   const components = getInput('components');
   console.log('tokens', tokens);
   console.log('components', components);
+
+  const currentCount = JSON.parse(getInput('currentCount') || `{}`);
+  console.log('currentCount', currentCount);
+
   generateMarkup(tokens, components);
 } catch (error) {
   setFailed(error.message);

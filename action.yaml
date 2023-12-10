@@ -25,6 +25,8 @@ inputs:
     description: number of components used in Ember
     required: true
     default: 0
+  currentCount:
+    description: stringified response of current data
 outputs:
   time: # id of output
     description: 'The time action was run' # Not currently set or used
