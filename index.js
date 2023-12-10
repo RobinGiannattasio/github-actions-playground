@@ -23,7 +23,7 @@ const generateMarkup = async (data) => {
     componentUsagesFromHbs = 0,
     tokenUsagesFromScss = 0,
     tokenUsagesFromJsx = 0,
-  } = currentCount;
+  } = data;
 
   await summary
     .addHeading('✨ EDS Usage ✨')
