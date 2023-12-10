@@ -67,9 +67,7 @@ const generateMarkup = async (current, prev) => {
         getChangeMessage(componentUsages, prevComponentUsages),
         getStatusMessage(componentUsages, prevComponentUsages)
     ]])
-    .addRaw('Successful adoption of the Expel Design System will allow us to recalibrate our UX and unify our offering across product lines. The following chart tracks usage of the different EDS assets throughout this repository.')
-    .addBreak()
-    .addRaw('Please visit the ')
+    .addRaw('Successful adoption of the Expel Design System will allow us to recalibrate our UX and unify our offering across product lines. Please visit the ')
     .addLink('EDS usage chart ', 'https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0https://docs.google.com/spreadsheets/d/1G4URwMwPY2uWxeV4PNKLXBUoSr75EroaqVyFZRJ35FY/edit#gid=0')
     .addRaw('for more information about usage of assets over time.')
     .addHeading('Detailed Breakdown', '2')
