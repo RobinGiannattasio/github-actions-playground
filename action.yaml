@@ -3,9 +3,8 @@ description: 'Take EDS usage data and provide meaningful metrics'
 inputs:
   currentCount:
     description: stringified response of current data
-outputs:
-  time: # id of output
-    description: 'The time action was run' # Not currently set or used
+  previousCount:
+    description: stringified response of previous data
 runs:
   using: 'node20'
   main: 'index.js'
