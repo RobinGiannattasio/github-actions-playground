@@ -34,7 +34,7 @@ const generateMarkup = async (current, prev) => {
     componentUsagesFromHbs = 0,
     tokenUsagesFromScss = 0,
     tokenUsagesFromJsx = 0,
-    overriddenBootstrapTokens = 0
+    overriddenTokensScss = 0
   } = current;
 
   const {
@@ -78,11 +78,11 @@ const generateMarkup = async (current, prev) => {
       [
         {data: 'Global', header: true},
         {data: 'Component', header: true},
-        {data: 'Bootstrap Override', header: true},
+        {data: 'EDS Override', header: true},
         {data: '#️⃣ Total', header: true}
       ],[
         `${tokenUsagesFromScss}`,
-        `${overriddenBootstrapTokens}`,
+        `${overriddenTokensScss}`,
         `${tokenUsagesFromJsx}`,
         `${tokenUsages}`
     ]])
