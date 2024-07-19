@@ -14,7 +14,8 @@ This action accepts the output from the EDS usage script and formats it into mar
   componentUsagesFromJsx: 10,
   componentUsagesFromHbs: 2,
   tokenUsagesFromScss: 6,
-  tokenUsagesFromJsx: 4
+  tokenUsagesFromJsx: 4,
+  overriddenTokensScss: 2
 }
 ```
 
@@ -23,5 +24,5 @@ This action accepts the output from the EDS usage script and formats it into mar
 ```yaml
 uses: RobinGiannattasio/github-actions-playground@v1.19
 with:
-  currentCount: '{"tokenUsages":10,"componentUsages":12,"componentUsagesFromJsx":10,"componentUsagesFromHbs":2,"tokenUsagesFromScss":6,"tokenUsagesFromJsx":4}'
+  currentCount: '{"tokenUsages":10,"componentUsages":12,"componentUsagesFromJsx":10,"componentUsagesFromHbs":2,"tokenUsagesFromScss":6,"tokenUsagesFromJsx":4, overriddenTokensScss: 2}'
 ```

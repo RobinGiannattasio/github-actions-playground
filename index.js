@@ -34,6 +34,7 @@ const generateMarkup = async (current, prev) => {
     componentUsagesFromHbs = 0,
     tokenUsagesFromScss = 0,
     tokenUsagesFromJsx = 0,
+    overriddenTokensScss = 0
   } = current;
 
   const {
@@ -72,14 +73,16 @@ const generateMarkup = async (current, prev) => {
     .addRaw('for more information about usage of assets over time.')
     .addHeading('Detailed Breakdown', '2')
     .addRaw('Asset usage is analyzed across the entire repository. Here is a more detailed view into where assets are being used.')
-    .addHeading('Token', '3')
+    .addHeading('Token', '4')
     .addTable([
       [
         {data: 'Global', header: true},
         {data: 'Component', header: true},
+        {data: 'EDS Override', header: true},
         {data: '#️⃣ Total', header: true}
       ],[
         `${tokenUsagesFromScss}`,
+        `${overriddenTokensScss}`,
         `${tokenUsagesFromJsx}`,
         `${tokenUsages}`
     ]])
